@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FA"
+    android:padding="16dp">
+
+    <!-- 🌿 TITLE -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LeafBuddy 🌿"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#2E7D32"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- INPUT -->
+    <EditText
+        android:id="@+id/etPlantName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Plant Name"
+        android:background="@android:drawable/edit_text"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/etFrequency"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Water Frequency"
+        android:background="@android:drawable/edit_text"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Add Plant 🌱"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#43A047"
+        android:textColor="#FFFFFF"/>
+
+    <!-- LIST -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>
