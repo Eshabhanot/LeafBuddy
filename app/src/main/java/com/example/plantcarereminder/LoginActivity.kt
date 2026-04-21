@@ -48,7 +48,6 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // ✅ Use coroutine instead of Thread (best practice)
             lifecycleScope.launch(Dispatchers.IO) {
                 val user = userDao.login(email, password)
 
@@ -56,10 +55,12 @@ class LoginActivity : AppCompatActivity() {
                     if (user != null) {
                         Toast.makeText(this@LoginActivity, "Login Success 🎉", Toast.LENGTH_SHORT).show()
 
-                        // 🔥 Save login session
-                        sharedPref.edit().putBoolean("isLoggedIn", true).apply()
+                        // 🔥 Save session + username
+                        sharedPref.edit()
+                            .putBoolean("isLoggedIn", true)
+                            .putString("username", user.name) // ✅ IMPORTANT
+                            .apply()
 
-                        // 🔥 Go to HOME (NOT MainActivity)
                         startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
                         finish()
 

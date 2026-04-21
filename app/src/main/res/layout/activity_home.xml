@@ -17,36 +17,50 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Welcome 👋"
-            android:textSize="24sp"
+            android:textSize="26sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF" />
 
-        <!-- 🌡️ WEATHER CARD -->
+        <!-- 🌤️ WEATHER CARD -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/weather_card_bg"
             android:orientation="vertical"
-            android:padding="20dp"
-            android:layout_marginTop="20dp">
+            android:padding="22dp"
+            android:layout_marginTop="24dp">
 
-            <TextView
-                android:id="@+id/tvWeather"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="37°C"
-                android:textSize="48sp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvWeather"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="37°C"
+                    android:textSize="48sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF" />
+
+                <ImageView
+                    android:id="@+id/imgWeather"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_sun" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvCondition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mostly Sunny ☀️"
+                android:text="Hot ☀️"
                 android:textSize="18sp"
                 android:textColor="#DDDDDD"
-                android:layout_marginTop="6dp" />
+                android:layout_marginTop="10dp" />
 
         </LinearLayout>
 
@@ -56,8 +70,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/card_dark"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:layout_marginTop="20dp">
+            android:padding="18dp"
+            android:layout_marginTop="24dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -65,7 +79,7 @@
                 android:text="Your Plants 🌱"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"/>
 
             <TextView
                 android:id="@+id/tvPlantCount"
@@ -74,7 +88,7 @@
                 android:text="Total Plants: 0"
                 android:textSize="20sp"
                 android:textColor="#C5B3FF"
-                android:layout_marginTop="6dp" />
+                android:layout_marginTop="8dp"/>
 
             <TextView
                 android:id="@+id/tvReminder"
@@ -83,21 +97,48 @@
                 android:text="Reminder: ..."
                 android:textSize="16sp"
                 android:textColor="#AAAAAA"
-                android:layout_marginTop="4dp" />
-
+                android:layout_marginTop="4dp"/>
         </LinearLayout>
 
-        <!-- BUTTON -->
+        <!-- 🌿 TIP CARD -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_dark"
+            android:orientation="vertical"
+            android:padding="18dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tip of the Day 🌿"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:id="@+id/tvTip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading tip..."
+                android:textSize="16sp"
+                android:textColor="#AAAAAA"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+
+        <!-- ➕ BUTTON -->
         <Button
             android:id="@+id/btnAddPlant"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="Add Plant 🌱"
             android:textColor="#000"
+            android:textStyle="bold"
             android:background="@drawable/button_bg"
             android:layout_marginTop="30dp" />
 
-        <!-- BUTTON -->
+        <!-- 🌍 BUTTON -->
         <Button
             android:id="@+id/btnViewPlants"
             android:layout_width="match_parent"
