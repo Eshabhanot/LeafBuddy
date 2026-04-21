@@ -1,4 +1,3 @@
-
 package com.example.plantcarereminder
 
 import android.content.Intent
@@ -24,7 +23,6 @@ class ManagePlantsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // ✅ FIXED: correct layout file
         setContentView(R.layout.activity_plant_list)
 
         // 🔥 Toolbar
@@ -41,10 +39,13 @@ class ManagePlantsActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = PlantAdapter(this, plantList)
+
+        // ✅ FIXED: pass DAO + refresh function
+        adapter = PlantAdapter(this, plantList, plantDao) {
+            loadPlants()
+        }
         recyclerView.adapter = adapter
 
-        // ✅ Load plants initially
         loadPlants()
 
         // ➕ Add Plant
@@ -66,13 +67,13 @@ class ManagePlantsActivity : AppCompatActivity() {
                     Toast.makeText(this@ManagePlantsActivity, "Plant Added 🌱", Toast.LENGTH_SHORT).show()
                     etPlantName.text.clear()
                     etFrequency.text.clear()
-                    loadPlants() // refresh list
+                    loadPlants()
                 }
             }
         }
     }
 
-    // 💾 Load local plants
+    // 💾 Load plants
     private fun loadPlants() {
         lifecycleScope.launch(Dispatchers.IO) {
             val localPlants = plantDao.getAllPlants() ?: emptyList()
@@ -85,7 +86,7 @@ class ManagePlantsActivity : AppCompatActivity() {
         }
     }
 
-    // 🔥 Menu (Logout)
+    // 🔥 Menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
@@ -93,7 +94,6 @@ class ManagePlantsActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.logout) {
-
             val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
             sharedPref.edit().clear().apply()
 
@@ -103,4 +103,3 @@ class ManagePlantsActivity : AppCompatActivity() {
         return true
     }
 }
-
