@@ -23,6 +23,7 @@ class HomeActivity : AppCompatActivity() {
         val tvPlantCount = findViewById<TextView>(R.id.tvPlantCount)
         val tvReminder = findViewById<TextView>(R.id.tvReminder)
         val tvWeather = findViewById<TextView>(R.id.tvWeather)
+        val tvCondition = findViewById<TextView>(R.id.tvCondition)
 
         val btnAddPlant = findViewById<Button>(R.id.btnAddPlant)
         val btnViewPlants = findViewById<Button>(R.id.btnViewPlants)
@@ -35,36 +36,38 @@ class HomeActivity : AppCompatActivity() {
                 tvPlantCount.text = "Total Plants: ${plants.size}"
 
                 tvReminder.text = if (plants.isNotEmpty()) {
-                    "Reminder: Water your plants today 💧"
+                    "Water your plants today 💧"
                 } else {
                     "No plants added yet"
                 }
             }
         }
 
-        // 🌤️ REAL WEATHER API (Open-Meteo - current_weather)
+        // 🌤️ Weather API
         lifecycleScope.launch(Dispatchers.IO) {
             try {
                 val response = WeatherRetrofit.api.getWeather(
-                    lat = 28.6,   // Delhi
+                    lat = 28.6,
                     lon = 77.2
                 )
 
                 val temp = response.current_weather.temperature
 
                 val message = when {
-                    temp > 35 -> "🔥 Hot! Water more 💧"
-                    temp < 15 -> "❄️ Cold! Water less"
-                    else -> "🌿 Perfect weather"
+                    temp > 35 -> "Hot ☀️"
+                    temp < 15 -> "Cold ❄️"
+                    else -> "Pleasant 🌿"
                 }
 
                 withContext(Dispatchers.Main) {
-                    tvWeather.text = "🌤️ $temp°C - $message"
+                    tvWeather.text = "${temp.toInt()}°C"
+                    tvCondition.text = message
                 }
 
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    tvWeather.text = "Weather unavailable ❌"
+                    tvWeather.text = "--"
+                    tvCondition.text = "Weather unavailable ❌"
                 }
             }
         }
