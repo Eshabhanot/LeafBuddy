@@ -1,54 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
-    android:padding="16dp">
+    android:background="#F5F7FA">
 
-    <!-- 🌿 TITLE -->
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- 🔝 TOOLBAR -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LeafBuddy 🌿"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#2E7D32"
-        android:layout_marginBottom="16dp"/>
+        android:background="#43A047"
+        android:title="LeafBuddy 🌿"
+        android:titleTextColor="#FFFFFF"/>
 
-    <!-- INPUT -->
-    <EditText
-        android:id="@+id/etPlantName"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Plant Name"
-        android:background="@android:drawable/edit_text"
-        android:padding="10dp"/>
-
-    <EditText
-        android:id="@+id/etFrequency"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Water Frequency"
-        android:background="@android:drawable/edit_text"
-        android:padding="10dp"
-        android:layout_marginTop="10dp"/>
-
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Add Plant 🌱"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#43A047"
-        android:textColor="#FFFFFF"/>
-
-    <!-- LIST -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <!-- 📦 CONTENT -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"/>
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 🌿 TITLE -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Your Plant 🌱"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- 📋 INPUT CARD -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:elevation="4dp">
+
+            <EditText
+                android:id="@+id/etPlantName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Plant Name"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:background="@android:drawable/edit_text"/>
+
+            <EditText
+                android:id="@+id/etFrequency"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Water Frequency"
+                android:inputType="text"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:drawable/edit_text"/>
+
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Add Plant 🌱"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#43A047"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <!-- 📜 LIST -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="12dp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

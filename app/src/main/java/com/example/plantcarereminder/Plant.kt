@@ -8,5 +8,6 @@ data class Plant(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val name: String,
-    val frequency: String
+    val frequency: String,
+    val imageUrl: String = ""
 )

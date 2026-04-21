@@ -2,17 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="LeafBuddy 🌿"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlantCareReminder">
 
-        <!-- 🔥 LOGIN = FIRST SCREEN -->
+        <!-- LOGIN (START SCREEN) -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -22,11 +24,20 @@
             </intent-filter>
         </activity>
 
-        <!-- REGISTER SCREEN -->
-        <activity android:name=".RegisterActivity" />
+        <!-- HOME -->
+        <activity android:name=".HomeActivity" />
 
-        <!-- MAIN SCREEN -->
-        <activity android:name=".MainActivity" />
+        <!-- MANAGE PLANTS (ADD + LIST) -->
+        <activity android:name=".ManagePlantsActivity" />
+
+        <!-- EXPLORE PLANTS (API) -->
+        <activity android:name=".ExplorePlantsActivity" />
+
+        <!-- PLANT DETAIL -->
+        <activity android:name=".PlantDetailActivity" />
+
+        <!-- REGISTER -->
+        <activity android:name=".RegisterActivity" />
 
     </application>
 

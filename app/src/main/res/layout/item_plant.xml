@@ -11,28 +11,42 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- 🌱 Plant Name -->
-        <TextView
-            android:id="@+id/tvPlantName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Plant Name"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#1B5E20"/>
+        <!-- 🔥 IMAGE -->
+        <ImageView
+            android:id="@+id/imgPlant"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"/>
 
-        <!-- 💧 Frequency -->
-        <TextView
-            android:id="@+id/tvFrequency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Water every 2 days"
-            android:textColor="#555555"
-            android:layout_marginTop="6dp"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- 🌱 Plant Name -->
+            <TextView
+                android:id="@+id/tvPlantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plant Name"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#1B5E20"/>
+
+            <!-- 💧 Frequency -->
+            <TextView
+                android:id="@+id/tvFrequency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Water every 2 days"
+                android:textColor="#555555"
+                android:layout_marginTop="6dp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
