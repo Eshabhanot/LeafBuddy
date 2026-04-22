@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -30,10 +32,15 @@ class HomeActivity : AppCompatActivity() {
         val tvReminder = findViewById<TextView>(R.id.tvReminder)
         val tvWeather = findViewById<TextView>(R.id.tvWeather)
         val tvCondition = findViewById<TextView>(R.id.tvCondition)
-        val tvTip = findViewById<TextView>(R.id.tvTip)   // ✅ IMPORTANT
+        val tvTip = findViewById<TextView>(R.id.tvTip)
+
+        val recyclerRecent = findViewById<RecyclerView>(R.id.recyclerRecent)
 
         val btnAddPlant = findViewById<Button>(R.id.btnAddPlant)
         val btnViewPlants = findViewById<Button>(R.id.btnViewPlants)
+
+        // 📌 Recycler Setup
+        recyclerRecent.layoutManager = LinearLayoutManager(this)
 
         // 🌟 Personalized Welcome
         val name = sharedPref.getString("username", "User")
@@ -47,9 +54,11 @@ class HomeActivity : AppCompatActivity() {
 
         tvWelcome.text = "$greeting, $name 👋"
 
-        // 🌱 Load Plants
+        // 🌱 Load Plants (Count + Recent)
         lifecycleScope.launch(Dispatchers.IO) {
             val plants = plantDao.getAllPlants() ?: emptyList()
+
+            val recentPlants = plants.takeLast(3).reversed()
 
             withContext(Dispatchers.Main) {
                 tvPlantCount.text = "Total Plants: ${plants.size}"
@@ -59,6 +68,10 @@ class HomeActivity : AppCompatActivity() {
                 } else {
                     "No plants added yet"
                 }
+
+                // 🔥 Set Recycler Adapter
+                recyclerRecent.adapter =
+                    RecentPlantAdapter(this@HomeActivity, recentPlants)
             }
         }
 
